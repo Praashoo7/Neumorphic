@@ -3,8 +3,8 @@ I started building this to try adding some things I wanted in other similar tool
 For some of the optimization and logical part claude took over and it is designed by yours truly.
 
 ![Readme Image](imgs/Readme_Image_1.png)
-![Readme Image](imgs/Readme_Image_2.png)
 ![Readme Image](imgs/Readme_Image_3.png)
+![Readme Image](imgs/Readme_Image_2.png)
 ![Readme Image](imgs/Readme_Image_4.png)
 
 
