@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Neumorphic is a free online tool to generate CSS and Tailwind box-shadow and text-shadow code for neumorphic (soft UI) designs.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Antic+Didone&family=Forum&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+  <link rel="stylesheet" href="index.css">
+  <link rel="icon" href="imgs/main.png">
+  <title>Neumorphic</title>
+</head>
+<body>
+
+  <h1 class="sr-only">Neumorphic — CSS and Tailwind shadow generator</h1>
+
+  <div class="nav">
+    <div><a href="index.html">
+      <div class="navText" aria-label="Neumorphic">
+        <span class="navLet" aria-hidden="true">N</span>
+        <span class="navLet" aria-hidden="true">E</span>
+        <span class="navLet" aria-hidden="true">U</span>
+        <span class="navLet" aria-hidden="true">M</span>
+        <span class="navLet" aria-hidden="true">O</span>
+        <span class="navLet" aria-hidden="true">R</span>
+        <span class="navLet" aria-hidden="true">P</span>
+        <span class="navLet" aria-hidden="true">H</span>
+        <span class="navLet" aria-hidden="true">I</span>
+        <span class="navLet" aria-hidden="true">C</span>
+      </div>      
+    </a></div>
+    <div class="dark">
+      <button type="button" class="iwantmoney" data-external="https://buymeacoffee.com/praashh" aria-label="Buy me a coffee">
+          <svg class="iwantmoneySVG" viewBox="0 0 27 39" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <path d="M14.3206 17.9122C12.9282 18.5083 11.3481 19.1842 9.30013 19.1842C8.44341 19.1824 7.59085 19.0649 6.76562 18.8347L8.18203 33.3768C8.23216 33.9847 8.50906 34.5514 8.95772 34.9645C9.40638 35.3776 9.994 35.6069 10.6039 35.6068C10.6039 35.6068 12.6122 35.7111 13.2823 35.7111C14.0036 35.7111 16.1662 35.6068 16.1662 35.6068C16.776 35.6068 17.3635 35.3774 17.8121 34.9643C18.2606 34.5512 18.5374 33.9846 18.5876 33.3768L20.1046 17.3073C19.4267 17.0757 18.7425 16.9219 17.9712 16.9219C16.6372 16.9214 15.5623 17.3808 14.3206 17.9122Z" fill="#FFDD00"></path>
+            <path d="M26.6584 10.3609L26.4451 9.28509C26.2537 8.31979 25.8193 7.40768 24.8285 7.05879C24.5109 6.94719 24.1505 6.89922 23.907 6.66819C23.6634 6.43716 23.5915 6.07837 23.5351 5.74565C23.4308 5.13497 23.3328 4.52377 23.2259 3.91413C23.1336 3.39002 23.0606 2.80125 22.8202 2.32042C22.5073 1.6748 21.858 1.29723 21.2124 1.04743C20.8815 0.923938 20.5439 0.819467 20.2012 0.734533C18.5882 0.308987 16.8922 0.152536 15.2328 0.0633591C13.241 -0.046547 11.244 -0.0134338 9.25692 0.162444C7.77794 0.296992 6.22021 0.459701 4.81476 0.971295C4.30108 1.15851 3.77175 1.38328 3.38115 1.78015C2.90189 2.26775 2.74544 3.02184 3.09537 3.62991C3.34412 4.06172 3.7655 4.3668 4.21242 4.56862C4.79457 4.82867 5.40253 5.02654 6.02621 5.15896C7.76282 5.54279 9.56148 5.6935 11.3356 5.75765C13.302 5.83701 15.2716 5.77269 17.2286 5.56521C17.7126 5.51202 18.1956 5.44822 18.6779 5.37382C19.2458 5.28673 19.6103 4.54411 19.4429 4.02678C19.2427 3.40828 18.7045 3.16839 18.0959 3.26173C18.0062 3.27581 17.917 3.28885 17.8273 3.30189L17.7626 3.31128C17.5565 3.33735 17.3503 3.36169 17.1441 3.38429C16.7182 3.43018 16.2913 3.46773 15.8633 3.49693C14.9048 3.56368 13.9437 3.59445 12.9831 3.59602C12.0391 3.59602 11.0947 3.56942 10.1529 3.50736C9.72314 3.4792 9.29447 3.44339 8.86684 3.39993C8.67232 3.37959 8.47832 3.35821 8.28432 3.33422L8.0997 3.31076L8.05955 3.30502L7.86816 3.27738C7.47703 3.21845 7.0859 3.15066 6.69895 3.06878C6.6599 3.06012 6.62498 3.03839 6.59994 3.0072C6.57491 2.976 6.56127 2.9372 6.56127 2.8972C6.56127 2.85721 6.57491 2.81841 6.59994 2.78721C6.62498 2.75602 6.6599 2.73429 6.69895 2.72563H6.70625C7.04158 2.65418 7.37951 2.59317 7.71849 2.53997C7.83148 2.52224 7.94482 2.50486 8.05851 2.48782H8.06164C8.27389 2.47374 8.48718 2.43567 8.69839 2.41064C10.536 2.2195 12.3845 2.15434 14.231 2.2156C15.1275 2.24168 16.0234 2.29435 16.9157 2.38509C17.1076 2.40491 17.2985 2.42577 17.4894 2.44923C17.5624 2.4581 17.6359 2.46853 17.7094 2.47739L17.8575 2.49878C18.2893 2.56309 18.7189 2.64115 19.1462 2.73293C19.7793 2.87061 20.5923 2.91546 20.8739 3.60906C20.9636 3.82913 21.0043 4.07371 21.0538 4.30474L21.1169 4.59939C21.1186 4.60467 21.1198 4.61008 21.1206 4.61555C21.2697 5.31089 21.4191 6.00623 21.5686 6.70157C21.5795 6.75293 21.5798 6.80601 21.5693 6.85748C21.5589 6.90895 21.5379 6.95771 21.5078 7.00072C21.4776 7.04373 21.4389 7.08007 21.3941 7.10747C21.3493 7.13487 21.2993 7.15274 21.2473 7.15997H21.2431L21.1519 7.17248L21.0617 7.18448C20.7759 7.22168 20.4897 7.25644 20.2033 7.28878C19.639 7.3531 19.0739 7.40872 18.5079 7.45566C17.3831 7.54918 16.2562 7.61055 15.127 7.63975C14.5516 7.65505 13.9763 7.66217 13.4013 7.66113C11.1124 7.65933 8.82553 7.5263 6.55188 7.2627C6.30574 7.2335 6.05959 7.20221 5.81344 7.1704C6.00431 7.19491 5.67472 7.15162 5.60797 7.14224C5.45152 7.12033 5.29506 7.09756 5.13861 7.07392C4.61346 6.99517 4.09144 6.89817 3.56733 6.81317C2.9337 6.70887 2.32771 6.76102 1.75458 7.07392C1.28413 7.33136 0.903361 7.72614 0.663078 8.20558C0.415886 8.71665 0.342354 9.2731 0.231796 9.82224C0.121237 10.3714 -0.0508594 10.9622 0.0143284 11.526C0.154613 12.7427 1.00518 13.7314 2.22863 13.9525C3.37959 14.1611 4.5368 14.3301 5.69714 14.474C10.2552 15.0323 14.8601 15.0991 19.4325 14.6733C19.8048 14.6385 20.1767 14.6006 20.548 14.5596C20.6639 14.5468 20.7813 14.5602 20.8914 14.5987C21.0016 14.6372 21.1017 14.6998 21.1845 14.782C21.2673 14.8642 21.3307 14.9639 21.37 15.0737C21.4093 15.1836 21.4235 15.3009 21.4116 15.4169L21.2958 16.5423C21.0625 18.8164 20.8292 21.0903 20.596 23.3641C20.3526 25.7519 20.1077 28.1395 19.8612 30.5269C19.7916 31.1993 19.7221 31.8715 19.6526 32.5436C19.5858 33.2054 19.5764 33.888 19.4507 34.542C19.2526 35.5704 18.5564 36.2019 17.5405 36.433C16.6098 36.6448 15.659 36.756 14.7045 36.7646C13.6464 36.7704 12.5888 36.7234 11.5307 36.7292C10.4011 36.7354 9.01755 36.6311 8.1456 35.7905C7.37951 35.052 7.27365 33.8958 7.16935 32.8961C7.03028 31.5725 6.89243 30.2491 6.75579 28.9259L5.98918 21.568L5.49324 16.8072C5.48489 16.7285 5.47655 16.6508 5.46873 16.5715C5.40927 16.0036 5.0072 15.4477 4.37357 15.4764C3.83121 15.5004 3.21479 15.9614 3.27841 16.5715L3.64607 20.1011L4.40642 27.4021C4.62302 29.4759 4.8391 31.5501 5.05465 33.6247C5.09637 34.022 5.13548 34.4205 5.17929 34.8179C5.41762 36.9894 7.07599 38.1596 9.12967 38.4892C10.3291 38.6822 11.5578 38.7218 12.775 38.7416C14.3353 38.7667 15.9113 38.8267 17.4461 38.544C19.7203 38.1268 21.4267 36.6082 21.6702 34.2526C21.7398 33.5725 21.8093 32.8923 21.8788 32.2119C22.11 29.9618 22.3409 27.7115 22.5714 25.4611L23.3255 18.1079L23.6713 14.7379C23.6885 14.5708 23.759 14.4137 23.8725 14.2898C23.986 14.1659 24.1363 14.0819 24.3012 14.0501C24.9515 13.9233 25.5732 13.7069 26.0357 13.212C26.7721 12.424 26.9187 11.3967 26.6584 10.3609ZM2.19525 11.0879C2.20516 11.0832 2.18691 11.1682 2.17909 11.2079C2.17752 11.1479 2.18065 11.0947 2.19525 11.0879ZM2.25836 11.5761C2.26357 11.5724 2.27921 11.5933 2.29538 11.6183C2.27087 11.5953 2.25523 11.5781 2.25783 11.5761H2.25836ZM2.32041 11.6579C2.34284 11.696 2.35483 11.72 2.32041 11.6579V11.6579ZM2.44505 11.7591H2.44818C2.44818 11.7627 2.45392 11.7664 2.456 11.7701C2.45255 11.766 2.4487 11.7624 2.44453 11.7591H2.44505ZM24.271 11.6079C24.0373 11.83 23.6853 11.9333 23.3375 11.9849C19.4366 12.5638 15.479 12.8569 11.5354 12.7275C8.71299 12.6311 5.92035 12.3176 3.12613 11.9229C2.85234 11.8843 2.55561 11.8342 2.36735 11.6324C2.01273 11.2517 2.18691 10.4851 2.27921 10.0251C2.3637 9.60373 2.52536 9.04207 3.02653 8.9821C3.80878 8.89031 4.71724 9.22042 5.49115 9.33776C6.4229 9.47996 7.35813 9.59382 8.29683 9.67935C12.303 10.0444 16.3765 9.98755 20.3649 9.45354C21.0919 9.35584 21.8163 9.24233 22.538 9.11299C23.181 8.99774 23.8939 8.78132 24.2825 9.44728C24.5489 9.90098 24.5844 10.508 24.5432 11.0207C24.5305 11.244 24.4329 11.4541 24.2705 11.6079H24.271Z"></path>
+          </svg>
+      </button>
+      <button type="button" title="Star on Git" class="git" data-external="https://github.com/Praashoo7/Neumorphism" aria-label="Star this project on GitHub">
+        <svg id='star' aria-hidden="true" focusable="false" height="20" viewBox="0 0 16 16" version="1.1" width="20" data-view-component="true" class="octicon octicon-star mr-1" >
+            <defs>
+                <filter id="sofGlow" height="300%" width="300%" x="-75%" y="-75%">
+                  <feMorphology operator="dilate" radius="4" in="SourceAlpha" result="thicken" />
+                  <feGaussianBlur in="thicken" stdDeviation="7" result="blurred" />
+                  <feFlood flood-color="rgb(255,255,0, 0.5)" result="glowColor" />
+                  <feComposite in="glowColor" in2="blurred" operator="in" result="softGlow_colored" />
+                  <feMerge>
+                    <feMergeNode in="softGlow_colored"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+            </defs>
+                <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Zm0 2.445L6.615 5.5a.75.75 0 0 1-.564.41l-3.097.45 2.24 2.184a.75.75 0 0 1 .216.664l-.528 3.084 2.769-1.456a.75.75 0 0 1 .698 0l2.77 1.456-.53-3.084a.75.75 0 0 1 .216-.664l2.24-2.183-3.096-.45a.75.75 0 0 1-.564-.41L8 2.694Z"></path>
+        </svg>
+      </button>
+      <label class="theme-switch-second" for="checkboxsecond" id="themeswitch-second">
+          <input type="checkbox" id="checkboxsecond" aria-label="Dark mode">
+          <svg class="slider-second" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path id="b1" d="M288,464H224a16,16,0,0,0,0,32h64a16,16,0,0,0,0-32Z"/><path id="b2" d="M304,416H208a16,16,0,0,0,0,32h96a16,16,0,0,0,0-32Z"/><path id="bulbL" d="M369.42,62.69C339.35,32.58,299.07,16,256,16A159.62,159.62,0,0,0,96,176c0,46.62,17.87,90.23,49,119.64l4.36,4.09C167.37,316.57,192,339.64,192,360v24a16,16,0,0,0,16,16h24a8,8,0,0,0,8-8V274.82a8,8,0,0,0-5.13-7.47A130.73,130.73,0,0,1,208.71,253,16,16,0,1,1,227.29,227c7.4,5.24,21.65,13,28.71,13s21.31-7.78,28.73-13A16,16,0,0,1,303.29,253a130.73,130.73,0,0,1-26.16,14.32,8,8,0,0,0-5.13,7.47V392a8,8,0,0,0,8,8h24a16,16,0,0,0,16-16V360c0-19.88,24.36-42.93,42.15-59.77l4.91-4.66C399.08,265,416,223.61,416,176A159.16,159.16,0,0,0,369.42,62.69Z"/>
+              <defs>
+                  <filter id="yellow-glow" filterUnits="userSpaceOnUse"
+                      x="-50%" y="-50%" width="200%" height="200%">
+                      <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur5"/>
+                      <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur10"/>
+                      <feGaussianBlur in="SourceGraphic" stdDeviation="20" result="blur20"/>
+                      <feGaussianBlur in="SourceGraphic" stdDeviation="30" result="blur30"/>
+                      <feGaussianBlur in="SourceGraphic" stdDeviation="50" result="blur50"/>
+                      <feMerge result="blur-merged">
+                          <feMergeNode in="blur10"/>
+                          <feMergeNode in="blur20"/>
+                          <feMergeNode in="blur30"/>
+                          <feMergeNode in="blur50"/>
+                      </feMerge>
+                      <feColorMatrix result="y-blur" in="blur-merged" type="matrix"
+                                      values="1 0 0 0 0
+                                      0 1 0 0 0
+                                      0 0 0 0 0
+                                      0 0 0 1 0" />
+                      <feMerge>
+                          <feMergeNode in="y-blur"/>
+                          <feMergeNode in="blur5"/>
+                          <feMergeNode in="SourceGraphic"/>
+                      </feMerge>
+                  </filter>
+              </defs>
+          </svg>
+      </label>
+    </div>
+  </div>
+
+  <div class="info_popup" id="info" role="dialog" aria-modal="true" aria-labelledby="info_title" aria-hidden="true">
+    <div class="info_popup_content">
+        <div class="info_title" id="info_title">
+            <span>About Neumorphic</span>
+        </div>
+        <div class="divider"></div>
+        <div class="information">
+          I started building this to try adding some things I wanted in other similar tools used for generating "Shadows", but then it turned out that I needed much more!<br><br>
+          For some of the optimization and logical part claude took over and it is designed by yours truly.<br><br>
+          Inspired from <span class="infoLink" role="link" tabindex="0" data-external="https://neumorphism.io/">neumorphism.io</span><br>
+          Shadow types are gathered from around the Internet.
+        </div>
+        <div class="delete_buttons">
+        <button type="button" class="cancel_only" data-close-popup="info">CLOSE</button>
+        </div>
+    </div>
+  </div>
+
+  <div class="main" id="main">
+
+    <button type="button" class="info_button" id="info_button" data-open-popup="info" aria-label="About this tool">
+      <svg class="info_svg" width="22px" height="22px" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M5.5 11V13C5.5 16.3137 8.18629 19 11.5 19H13.5C16.8137 19 19.5 16.3137 19.5 13V11C19.5 7.68629 16.8137 5 13.5 5H11.5C8.18629 5 5.5 7.68629 5.5 11Z" stroke="#727272" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M11.75 16C11.75 16.4142 12.0858 16.75 12.5 16.75C12.9142 16.75 13.25 16.4142 13.25 16H11.75ZM12.5 11H13.25C13.25 10.5858 12.9142 10.25 12.5 10.25V11ZM11.5 10.25C11.0858 10.25 10.75 10.5858 10.75 11C10.75 11.4142 11.0858 11.75 11.5 11.75V10.25ZM12.5 16.75C12.9142 16.75 13.25 16.4142 13.25 16C13.25 15.5858 12.9142 15.25 12.5 15.25V16.75ZM11.5 15.25C11.0858 15.25 10.75 15.5858 10.75 16C10.75 16.4142 11.0858 16.75 11.5 16.75V15.25ZM12.5 15.25C12.0858 15.25 11.75 15.5858 11.75 16C11.75 16.4142 12.0858 16.75 12.5 16.75V15.25ZM13.5 16.75C13.9142 16.75 14.25 16.4142 14.25 16C14.25 15.5858 13.9142 15.25 13.5 15.25V16.75ZM13.25 8C13.25 7.58579 12.9142 7.25 12.5 7.25C12.0858 7.25 11.75 7.58579 11.75 8H13.25ZM11.75 9C11.75 9.41421 12.0858 9.75 12.5 9.75C12.9142 9.75 13.25 9.41421 13.25 9H11.75ZM13.25 16V11H11.75V16H13.25ZM12.5 10.25H11.5V11.75H12.5V10.25ZM12.5 15.25H11.5V16.75H12.5V15.25ZM12.5 16.75H13.5V15.25H12.5V16.75ZM11.75 8V9H13.25V8H11.75Z" fill="#727272"/>
+      </svg>
+    </button>
+    <div class="shadowDivs">
+      <div class="someBox" id="someBox">
+      <div class="shadow-div"></div>
+      </div>
+      <div class="mover" role="slider" tabindex="0" aria-label="Light source direction" aria-valuemin="0" aria-valuemax="359" aria-valuenow="45" aria-valuetext="45 degrees"></div>
+      <label class="switch">
+        <input type="checkbox" aria-label="Show text shadow editor">
+        <div class="sliderBT">
+          <span>Box</span>
+          <span>Text</span>
+        </div>
+      </label>
+    </div>
+    <div class="data">
+      <div class="radio-container">
+        <label class="container">
+          <input type="radio" name="background-options" value="1" checked> Flat
+          <span class="checkmark"></span>
+        </label>
+        <label class="container">
+          <input type="radio" name="background-options" value="2"> Concave
+          <span class="checkmark"></span>
+        </label>
+        <label class="container">
+          <input type="radio" name="background-options" value="3"> Convex
+          <span class="checkmark"></span>
+        </label>
+        <label class="container">
+          <input type="radio" name="background-options" value="4"> Pressed
+          <span class="checkmark"></span>
+        </label>
+      </div>
+      <div class="sliders">
+        <div class="slider-container">Size
+          <input type="range" class="slider" id="size-slider" min="20" max="300" value="300" aria-label="Size">
+        </div>
+        <div class="slider-container">Radius
+          <input type="range" class="slider" id="radius-slider" min="0" max="150" value="50" aria-label="Radius">
+        </div>
+        <div class="distance-slider-container">Distance
+          <input type="range" class="slider" id="distance-slider" min="0" max="95" value="30" aria-label="Distance">
+        </div>
+        <div class="intensity-slider-container">Intensity
+          <input type="range" class="slider" id="intensity-slider" min="0" max="100" value="50" aria-label="Intensity">
+        </div>
+        <div class="blur-slider-container">Blur
+          <input type="range" class="slider" id="blur-slider" min="0" max="100" value="60" aria-label="Blur">
+        </div>
+        <div class="inset-slider-container">Inset
+          <input type="range" class="slider" id="inset-slider" min="0" max="500" value="50" aria-label="Inset">
+        </div>
+        <div class="inset-checkbox-container">
+          <label for="inset-checkbox">Enable Inset</label>
+          <input class="checkbox" type="checkbox" id="inset-checkbox">
+        </div>
+        <div class="customizationsLabel">
+          <label class="customizationsTitle" for="customizations-checkboxBox">Try some more Customizations</label>
+          <div class="customizations-checkbox-container">
+            <input class="checkbox" type="checkbox" id="customizations-checkboxBox">
+          </div>
+        </div>
+        <div class="customizations" id="customizationsBox">
+          <div class="colorPickers">
+            <div class="wrap">
+            <label for="background-color-picker">Box Background Color :</label>
+            <input type="color" id="background-color-picker" value="#e0e0e0">
+            </div>
+            <div class="wrap">
+            <label for="some-div-color-picker">Main Background Color :</label>
+            <input type="color" id="some-div-color-picker" value="#e0e0e0">
+            </div>
+            <div class="wrap">
+            <label for="shadow-x-color-picker">Shadow-X Color :</label>
+            <input type="color" id="shadow-x-color-picker" value="#9a9a9a">
+            </div>
+            <div class="wrap">
+            <label for="shadow-y-color-picker">Shadow-Y Color :</label>
+            <input type="color" id="shadow-y-color-picker" value="#ffffff">
+            </div>
+            <div class="wrap" id="wrapB">
+            <label for="gradient-color1-picker" id="gradient-color1-label">Gradient Color-1 :</label>
+            <input type="color" id="gradient-color1-picker" value="#cacaca">
+            </div>
+            <div class="wrap" id="wrapB1">
+            <label for="gradient-color2-picker" id="gradient-color2-label">Gradient Color-2 :</label>
+            <input type="color" id="gradient-color2-picker" value="#f0f0f0">
+            </div>
+            <div class="wrap">
+            <label for="shadow-inset-color-picker">Inset Color :</label>
+            <input type="color" id="shadow-inset-color-picker" value="#000000">
+          </div>
+          <div id="colorPairingButtonsStyle1and4" class="colorPairingButtons" style="display: none;">
+            <p>Try out some Box-Shadow Pairs : </p>
+            <button type="button" class="colorPairBox" data-pair-style="1and4" aria-label="Coral box-shadow pair" data-someBox="#FFA07A" style="background-color: #FFA07A" data-shadowDiv="#FFA07A" data-shadowX="#FF7F50" data-shadowY="#FFC1A4"></button>
+            <button type="button" class="colorPairBox" data-pair-style="1and4" aria-label="Teal box-shadow pair" data-someBox="#20B2AA" style="background-color: #20B2AA" data-shadowDiv="#20B2AA" data-shadowX="#008B8B" data-shadowY="#48D1CC"></button>
+            <button type="button" class="colorPairBox" data-pair-style="1and4" aria-label="Khaki box-shadow pair" data-someBox="#F0E68C" style="background-color: #F0E68C" data-shadowDiv="#F0E68C" data-shadowX="#BDB76B" data-shadowY="#FFF8DC"></button>
+            <button type="button" class="colorPairBox" data-pair-style="1and4" aria-label="Pink box-shadow pair" data-someBox="#FF69B4" style="background-color: #FF69B4" data-shadowDiv="#FF69B4" data-shadowX="#FF1493" data-shadowY="#FFC0CB"></button>
+            <button type="button" class="colorPairBox" data-pair-style="1and4" aria-label="Aquamarine box-shadow pair" data-someBox="#7FFFD4" style="background-color: #7FFFD4" data-shadowDiv="#7FFFD4" data-shadowX="#40E0D0" data-shadowY="#AFEEEE"></button>
+            <button type="button" class="colorPairBox" data-pair-style="1and4" aria-label="Light pink box-shadow pair" data-someBox="#FFB6C1" style="background-color: #FFB6C1" data-shadowDiv="#FFB6C1" data-shadowX="#FF8DA1" data-shadowY="#FFDAE1"></button>
+            <button type="button" class="colorPairBox" data-pair-style="1and4" aria-label="Lavender box-shadow pair" data-someBox="#E6E6FA" style="background-color: #E6E6FA" data-shadowDiv="#E6E6FA" data-shadowX="#D8BFD8" data-shadowY="#F8F8FF"></button>
+            <button type="button" class="colorPairBox" data-pair-style="1and4" aria-label="Light green box-shadow pair" data-someBox="#90EE90" style="background-color: #90EE90" data-shadowDiv="#90EE90" data-shadowX="#66CDAA" data-shadowY="#98FB98"></button>
+            <button type="button" class="colorPairBox" data-pair-style="1and4" aria-label="Peach box-shadow pair" data-someBox="#FFDAB9" style="background-color: #FFDAB9" data-shadowDiv="#FFDAB9" data-shadowX="#FFDAB9" data-shadowY="#FFEFD5"></button>
+            <button type="button" class="colorPairBox" data-pair-style="1and4" aria-label="Sky blue box-shadow pair" data-someBox="#87CEFA" style="background-color: #87CEFA" data-shadowDiv="#87CEFA" data-shadowX="#4682B4" data-shadowY="#B0E2FF"></button>
+          </div>
+        <div id="colorPairingButtonsStyle2and3" class="colorPairingButtons" style="display: none;">
+          <p>Try out some Box-Shadow Pairs : </p>
+          <button type="button" class="colorPairBox" data-pair-style="2and3" aria-label="Light pink box-shadow pair"
+                style="background-color: #FFB6C1"
+                data-someBox="#FFB6C1" 
+                data-gradientStart="#FFA4B2" 
+                data-gradientEnd="#FFC8D0" 
+                data-shadowX="#FF7A91" 
+                data-shadowY="#FFE4E8"></button>
+          <button type="button" class="colorPairBox" data-pair-style="2and3" aria-label="Pale green box-shadow pair"
+                style="background-color: #98FB98"
+                data-someBox="#98FB98" 
+                data-gradientStart="#89E289" 
+                data-gradientEnd="#A7FFA7" 
+                data-shadowX="#65D665" 
+                data-shadowY="#CBFFCB"></button>
+          <button type="button" class="colorPairBox" data-pair-style="2and3" aria-label="Sky blue box-shadow pair"
+                style="background-color: #87CEFA"
+                data-someBox="#87CEFA" 
+                data-gradientStart="#79B9E1" 
+                data-gradientEnd="#95E3FF" 
+                data-shadowX="#5A8AA7" 
+                data-shadowY="#B5E3FF"></button>
+          <button type="button" class="colorPairBox" data-pair-style="2and3" aria-label="Light salmon box-shadow pair"
+                style="background-color: #FFA07A"
+                data-someBox="#FFA07A" 
+                data-gradientStart="#E6906E" 
+                data-gradientEnd="#FFB086" 
+                data-shadowX="#AA6B52" 
+                data-shadowY="#FFD0A2"></button>
+          <button type="button" class="colorPairBox" data-pair-style="2and3" aria-label="Plum box-shadow pair"
+                style="background-color: #DDA0DD"
+                data-someBox="#DDA0DD" 
+                data-gradientStart="#C790C7" 
+                data-gradientEnd="#F3B0F3" 
+                data-shadowX="#946B94" 
+                data-shadowY="#FFD0FF"></button>
+          <button type="button" class="colorPairBox" data-pair-style="2and3" aria-label="Khaki box-shadow pair"
+                style="background-color: #F0E68C"
+                data-someBox="#F0E68C" 
+                data-gradientStart="#D8CF7E" 
+                data-gradientEnd="#FFFD9A" 
+                data-shadowX="#A19A5E" 
+                data-shadowY="#FFFFBA"></button>
+          <button type="button" class="colorPairBox" data-pair-style="2and3" aria-label="Aquamarine box-shadow pair"
+                style="background-color: #7FFFD4"
+                data-someBox="#7FFFD4" 
+                data-gradientStart="#72E6BF" 
+                data-gradientEnd="#8CFFE9" 
+                data-shadowX="#54AA8D" 
+                data-shadowY="#A7FFFF"></button>
+          <button type="button" class="colorPairBox" data-pair-style="2and3" aria-label="Pink box-shadow pair"
+                style="background-color: #FFC0CB"
+                data-someBox="#FFC0CB" 
+                data-gradientStart="#E6ADB7" 
+                data-gradientEnd="#FFD3DF" 
+                data-shadowX="#AA8087" 
+                data-shadowY="#FFFAFF"></button>
+          <button type="button" class="colorPairBox" data-pair-style="2and3" aria-label="Powder blue box-shadow pair"
+                style="background-color: #B0E0E6"
+                data-someBox="#B0E0E6" 
+                data-gradientStart="#9ECACF" 
+                data-gradientEnd="#C2F6FD" 
+                data-shadowX="#749599" 
+                data-shadowY="#E8FFFF"></button>
+          <button type="button" class="colorPairBox" data-pair-style="2and3" aria-label="Light goldenrod box-shadow pair"
+              style="background-color: #FAFAD2"
+                data-someBox="#FAFAD2" 
+              data-gradientStart="#E1E1BD" 
+              data-gradientEnd="#FFFFE7" 
+              data-shadowX="#A7A78C" 
+              data-shadowY="#FFFFF7"></button>
+        </div>
+        </div>
+          <button type="button" id="resetButtonBox" class="resetButtonBox">Reset Colors</button>
+        </div>
+      </div>
+      <div class="text">
+        <label class="formatSwitch" for="formatToggleBox" title="Switch output format">
+          <input type="checkbox" id="formatToggleBox" aria-label="Output as Tailwind classes">
+          <div class="formatSliderBT">
+            <span>CSS</span>
+            <span>TW</span>
+          </div>
+        </label>
+        <div class="textarea" id="textarea"></div>
+        <button type="button" class="copy" id="copyButton" aria-label="Copy box shadow code">
+          <svg class="copysvg" style="background-color: transparent;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M15 1.25H10.9436C9.10583 1.24998 7.65019 1.24997 6.51098 1.40314C5.33856 1.56076 4.38961 1.89288 3.64124 2.64124C2.89288 3.38961 2.56076 4.33856 2.40314 5.51098C2.24997 6.65019 2.24998 8.10582 2.25 9.94357V16C2.25 17.8722 3.62205 19.424 5.41551 19.7047C5.55348 20.4687 5.81753 21.1208 6.34835 21.6517C6.95027 22.2536 7.70814 22.5125 8.60825 22.6335C9.47522 22.75 10.5775 22.75 11.9451 22.75H15.0549C16.4225 22.75 17.5248 22.75 18.3918 22.6335C19.2919 22.5125 20.0497 22.2536 20.6517 21.6517C21.2536 21.0497 21.5125 20.2919 21.6335 19.3918C21.75 18.5248 21.75 17.4225 21.75 16.0549V10.9451C21.75 9.57754 21.75 8.47522 21.6335 7.60825C21.5125 6.70814 21.2536 5.95027 20.6517 5.34835C20.1208 4.81753 19.4687 4.55348 18.7047 4.41551C18.424 2.62205 16.8722 1.25 15 1.25ZM17.1293 4.27117C16.8265 3.38623 15.9876 2.75 15 2.75H11C9.09318 2.75 7.73851 2.75159 6.71085 2.88976C5.70476 3.02502 5.12511 3.27869 4.7019 3.7019C4.27869 4.12511 4.02502 4.70476 3.88976 5.71085C3.75159 6.73851 3.75 8.09318 3.75 10V16C3.75 16.9876 4.38624 17.8265 5.27117 18.1293C5.24998 17.5194 5.24999 16.8297 5.25 16.0549V10.9451C5.24998 9.57754 5.24996 8.47522 5.36652 7.60825C5.48754 6.70814 5.74643 5.95027 6.34835 5.34835C6.95027 4.74643 7.70814 4.48754 8.60825 4.36652C9.47522 4.24996 10.5775 4.24998 11.9451 4.25H15.0549C15.8297 4.24999 16.5194 4.24998 17.1293 4.27117ZM7.40901 6.40901C7.68577 6.13225 8.07435 5.9518 8.80812 5.85315C9.56347 5.75159 10.5646 5.75 12 5.75H15C16.4354 5.75 17.4365 5.75159 18.1919 5.85315C18.9257 5.9518 19.3142 6.13225 19.591 6.40901C19.8678 6.68577 20.0482 7.07435 20.1469 7.80812C20.2484 8.56347 20.25 9.56458 20.25 11V16C20.25 17.4354 20.2484 18.4365 20.1469 19.1919C20.0482 19.9257 19.8678 20.3142 19.591 20.591C19.3142 20.8678 18.9257 21.0482 18.1919 21.1469C17.4365 21.2484 16.4354 21.25 15 21.25H12C10.5646 21.25 9.56347 21.2484 8.80812 21.1469C8.07435 21.0482 7.68577 20.8678 7.40901 20.591C7.13225 20.3142 6.9518 19.9257 6.85315 19.1919C6.75159 18.4365 6.75 17.4354 6.75 16V11C6.75 9.56458 6.75159 8.56347 6.85315 7.80812C6.9518 7.07435 7.13225 6.68577 7.40901 6.40901Z" />
+          </svg>
+          <svg class="donesvg" style="background-color: transparent;" xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -960 960 960" width="16" aria-hidden="true" focusable="false"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+        </button>
+      </div>
+    </div>
+
+  </div>
+  
+  <div class="mainB" id="mainB">
+
+    <button type="button" class="info_button" id="info_button1" data-open-popup="info" aria-label="About this tool">
+      <svg class="info_svg" width="22px" height="22px" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M5.5 11V13C5.5 16.3137 8.18629 19 11.5 19H13.5C16.8137 19 19.5 16.3137 19.5 13V11C19.5 7.68629 16.8137 5 13.5 5H11.5C8.18629 5 5.5 7.68629 5.5 11Z" stroke="#727272" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M11.75 16C11.75 16.4142 12.0858 16.75 12.5 16.75C12.9142 16.75 13.25 16.4142 13.25 16H11.75ZM12.5 11H13.25C13.25 10.5858 12.9142 10.25 12.5 10.25V11ZM11.5 10.25C11.0858 10.25 10.75 10.5858 10.75 11C10.75 11.4142 11.0858 11.75 11.5 11.75V10.25ZM12.5 16.75C12.9142 16.75 13.25 16.4142 13.25 16C13.25 15.5858 12.9142 15.25 12.5 15.25V16.75ZM11.5 15.25C11.0858 15.25 10.75 15.5858 10.75 16C10.75 16.4142 11.0858 16.75 11.5 16.75V15.25ZM12.5 15.25C12.0858 15.25 11.75 15.5858 11.75 16C11.75 16.4142 12.0858 16.75 12.5 16.75V15.25ZM13.5 16.75C13.9142 16.75 14.25 16.4142 14.25 16C14.25 15.5858 13.9142 15.25 13.5 15.25V16.75ZM13.25 8C13.25 7.58579 12.9142 7.25 12.5 7.25C12.0858 7.25 11.75 7.58579 11.75 8H13.25ZM11.75 9C11.75 9.41421 12.0858 9.75 12.5 9.75C12.9142 9.75 13.25 9.41421 13.25 9H11.75ZM13.25 16V11H11.75V16H13.25ZM12.5 10.25H11.5V11.75H12.5V10.25ZM12.5 15.25H11.5V16.75H12.5V15.25ZM12.5 16.75H13.5V15.25H12.5V16.75ZM11.75 8V9H13.25V8H11.75Z" fill="#727272"/>
+      </svg>
+    </button>
+
+    <div class="shadowDivs">
+      <div class="some">
+      <div class="textShadow" aria-hidden="true">Shadow</div>
+      </div>
+      <div class="movable" role="slider" tabindex="0" aria-label="Light source direction" aria-valuemin="0" aria-valuemax="359" aria-valuenow="45" aria-valuetext="45 degrees"></div>
+      <label class="switch">
+        <input type="checkbox" aria-label="Show text shadow editor">
+        <div class="sliderBT">
+          <span>Box</span>
+          <span>Text</span>
+        </div>
+      </label>
+    </div>
+
+    <div class="data">
+      <div class="radio-containerS">
+        <label class="containerS">
+            <input type="radio" name="style" value="style1" checked>
+            <span class="checkmark">Stack</span>
+        </label>
+        <label class="containerS">
+            <input type="radio" name="style" value="style2">
+            <span class="checkmark">Drift</span>
+        </label>
+        <label class="containerS">
+            <input type="radio" name="style" value="style3">
+            <span class="checkmark">Parallel</span>
+        </label>
+        <label class="containerS">
+            <input type="radio" name="style" value="style4">
+            <span class="checkmark">Chamber</span>
+        </label>
+        <label class="containerS">
+            <input type="radio" name="style" value="style5">
+            <span class="checkmark">Inset</span>
+        </label>
+        <label class="containerS">
+          <input type="radio" name="style" value="style6">
+          <span class="checkmark">Simple</span>
+      </label>
+      <label class="containerS">
+        <input type="radio" name="style" value="style7">
+        <span class="checkmark">Elegant</span>
+    </label>
+      </div>
+      <div class="sliders">
+        <div class="font-selector">
+          <label for="fontSearch">Choose a font :</label>
+          <div class="custom-select">
+            <input type="text" id="fontSearch" placeholder="Search fonts.." autocomplete="off" role="combobox" aria-expanded="false" aria-controls="fontList" aria-autocomplete="list">
+            <ul id="fontList" class="font-list" role="listbox" aria-label="Fonts"></ul>
+          </div>
+        </div>
+        <div class="slidersMain">
+          <div class="slider-container">Size
+          <input type="range" min="1" max="7" step="0.1" value="6" class="slider" id="sizeSlider" aria-label="Size">
+          </div>
+          <div class="slider-container">Distance
+          <input type="range" min="5" max="700" value="150" class="slider" id="distanceSlider" aria-label="Distance">
+          </div>
+          <div class="slider-container">Intensity
+          <input type="range" min="0" max="1.11" step="0.001" value="1" class="slider" id="intensitySlider" aria-label="Intensity">
+          </div>
+          <div class="slider-container">Blur
+          <input type="range" min="0" max="20" value="0" class="slider" id="blurSlider" aria-label="Blur">
+          </div>
+        </div>
+      </div>
+      <div class="customizationsLabel">
+        <label class="customizationsTitle" for="customizations-checkbox">Try some more Customizations</label>
+        <div class="customizations-checkbox-container">
+          <input class="checkbox" type="checkbox" id="customizations-checkbox">
+        </div>
+      </div>
+        <div class="customizations" id="customizations">
+          <div class="colorPickers">
+            <div class="wrap">
+            <label for="textColorPicker">Text Color :</label>
+            <input type="color" id="textColorPicker" value="#e0dfdc">
+            </div>
+            <div class="wrap">
+            <label for="shadowColorPicker">Shadow Color :</label>
+            <input type="color" id="shadowColorPicker" value="#000000">
+            </div>
+            <div class="wrap" id="wrapT">
+            <label for="secondShadowColorPicker">Second Shadow Color :</label>
+            <input type="color" id="secondShadowColorPicker" value="#363636">
+            </div>
+            <div class="wrap">
+            <label for="someBackgroundColorPicker">Div Background Color :</label>
+            <input type="color" id="someBackgroundColorPicker" value="#e0e0e0">
+          </div>
+        </div>
+          <div id="colorPairingButtons14" class="colorPairingButtons" style="display: none;">
+            <p>Try out some Text-Shadow Pairs :</p>
+            <button type="button" class="colorPair" aria-label="Ice blue text-shadow pair" style="background-color: #D9EAF2" data-text="#D9EAF2" data-shadow="#265973"></button>
+            <button type="button" class="colorPair" aria-label="Tomato text-shadow pair" style="background-color: #FF6347" data-text="#FF6347" data-shadow="#ADD8E6"></button>
+            <button type="button" class="colorPair" aria-label="Blush text-shadow pair" style="background-color: #F7CFC8" data-text="#F7CFC8" data-shadow="#4C84C8"></button>
+            <button type="button" class="colorPair" aria-label="White text-shadow pair" style="background-color: #FFFFFF" data-text="#FFFFFF" data-shadow="#DF9E9E"></button>
+            <button type="button" class="colorPair" aria-label="Cream text-shadow pair" style="background-color: #F5EBCE" data-text="#F5EBCE" data-shadow="#EB4A2C"></button>
+            <button type="button" class="colorPair" aria-label="Pale yellow text-shadow pair" style="background-color: #FFFFD9" data-text="#FFFFD9" data-shadow="#0DA788"></button>
+            <button type="button" class="colorPair" aria-label="Slate text-shadow pair" style="background-color: #2C3E50" data-text="#2C3E50" data-shadow="#BDC3C7"></button>
+            <button type="button" class="colorPair" aria-label="Khaki text-shadow pair" style="background-color: #F0E68C" data-text="#F0E68C" data-shadow="#8B4513"></button>
+            <button type="button" class="colorPair" aria-label="Lavender text-shadow pair" style="background-color: #E6E6FA" data-text="#E6E6FA" data-shadow="#4B0082"></button>
+            <button type="button" class="colorPair" aria-label="Light pink text-shadow pair" style="background-color: #FFB6C1" data-text="#FFB6C1" data-shadow="#8B008B"></button>
+            <button type="button" class="colorPair" aria-label="Thistle text-shadow pair" style="background-color: #D8BFD8" data-text="#D8BFD8" data-shadow="#4B0082"></button>
+            <button type="button" class="colorPair" aria-label="Amber text-shadow pair" style="background-color: #EFA707" data-text="#EFA707" data-shadow="#AF0004"></button>
+          </div>
+
+          <div id="colorPairingButtons2" class="colorPairingButtons" style="display: none;">
+            <p>Try out some Text-Shadow Pairs :</p>
+            <button type="button" class="colorPair" aria-label="Light purple text-shadow pair" style="background-color: #F0D3F7" data-text="#F0D3F7" data-shadow="#220529" data-shadow2="#472A4E"></button>
+            <button type="button" class="colorPair" aria-label="Pale green text-shadow pair" style="background-color: #C7E8CA" data-text="#C7E8CA" data-shadow="#091D0C" data-shadow2="#2D4230"></button>
+            <button type="button" class="colorPair" aria-label="Peach text-shadow pair" style="background-color: #FFE5B4" data-text="#FFE5B4" data-shadow="#261706" data-shadow2="#4C3D1C"></button>
+            <button type="button" class="colorPair" aria-label="Pale blue text-shadow pair" style="background-color: #CCEBFF" data-text="#CCEBFF" data-shadow="#0A1C2A" data-shadow2="#2E4150"></button>
+            <button type="button" class="colorPair" aria-label="Pink text-shadow pair" style="background-color: #FFD1DC" data-text="#FFD1DC" data-shadow="#2A0F16" data-shadow2="#50333C"></button>
+            <button type="button" class="colorPair" aria-label="Light cyan text-shadow pair" style="background-color: #E6F9FF" data-text="#E6F9FF" data-shadow="#122A2F" data-shadow2="#365055"></button>
+            <button type="button" class="colorPair" aria-label="Pastel yellow text-shadow pair" style="background-color: #FDFD96" data-text="#FDFD96" data-shadow="#2A2A00" data-shadow2="#505026"></button>
+            <button type="button" class="colorPair" aria-label="Peach puff text-shadow pair" style="background-color: #FFCBA4" data-text="#FFCBA4" data-shadow="#2A1604" data-shadow2="#503C2A"></button>
+            <button type="button" class="colorPair" aria-label="Tea green text-shadow pair" style="background-color: #C1E1C1" data-text="#C1E1C1" data-shadow="#082408" data-shadow2="#2E4A2E"></button>
+            <button type="button" class="colorPair" aria-label="Light orange text-shadow pair" style="background-color: #FFC3A0" data-text="#FFC3A0" data-shadow="#2A1100" data-shadow2="#503726"></button>
+          </div>
+
+          <div id="colorPairingButtons3" class="colorPairingButtons" style="display: none;">
+            <p>Try out some Text-Shadow Pairs :</p>
+            <button type="button" class="colorPair" aria-label="Salmon pink text-shadow pair" style="background-color: #FFB3BA" data-text="#FFB3BA" data-shadow="#FFF0F1" data-shadow2="rgba(255, 179, 186, 0.2)"></button>
+            <button type="button" class="colorPair" aria-label="Mint text-shadow pair" style="background-color: #00C897" data-text="#00C897" data-shadow="#00FFC8" data-shadow2="rgba(0, 200, 151, 0.2)"></button>
+            <button type="button" class="colorPair" aria-label="Blue text-shadow pair" style="background-color: #0077B6" data-text="#0077B6" data-shadow="#00A0FF" data-shadow2="rgba(0, 119, 182, 0.2)"></button>
+            <button type="button" class="colorPair" aria-label="Orange text-shadow pair" style="background-color: #FF8C00" data-text="#FF8C00" data-shadow="#FFBB00" data-shadow2="rgba(255, 140, 0, 0.2)"></button>
+            <button type="button" class="colorPair" aria-label="Purple text-shadow pair" style="background-color: #9B59B6" data-text="#9B59B6" data-shadow="#C39BD3" data-shadow2="rgba(155, 89, 182, 0.2)"></button>
+            <button type="button" class="colorPair" aria-label="Pale blue-gray text-shadow pair" style="background-color: #AEC6CF" data-text="#AEC6CF" data-shadow="#EDF3F5" data-shadow2="rgba(174, 198, 207, 0.2)"></button>
+            <button type="button" class="colorPair" aria-label="Deep pink text-shadow pair" style="background-color: #FF1493" data-text="#FF1493" data-shadow="#FF69B4" data-shadow2="rgba(255, 20, 147, 0.2)"></button>
+            <button type="button" class="colorPair" aria-label="Gold text-shadow pair" style="background-color: #FDCB6E" data-text="#FDCB6E" data-shadow="#FFF6E5" data-shadow2="rgba(253, 203, 110, 0.2)"></button>
+            <button type="button" class="colorPair" aria-label="Light purple text-shadow pair" style="background-color: #C3B1E1" data-text="#C3B1E1" data-shadow="#F4F0FA" data-shadow2="rgba(195, 177, 225, 0.2)"></button>
+            <button type="button" class="colorPair" aria-label="Light pink text-shadow pair" style="background-color: #FF9AA2" data-text="#FF9AA2" data-shadow="#FFECEE" data-shadow2="rgba(255, 154, 162, 0.2)"></button>
+          </div>
+
+          <div id="colorPairingButtons5" class="colorPairingButtons" style="display: none;">
+            <p>Try out some Text-Shadow Pairs :</p>
+            <button type="button" class="colorPair" aria-label="Moccasin text-shadow pair" style="background-color: #FFE4B5" data-some="#FFE4B5" data-text="#8B7355" data-shadow="rgba(255, 255, 255, 0.5)"></button>
+            <button type="button" class="colorPair" aria-label="Powder blue text-shadow pair" style="background-color: #B0E0E6" data-some="#B0E0E6" data-text="#5A7376" data-shadow="rgba(255, 255, 255, 0.5)"></button>
+            <button type="button" class="colorPair" aria-label="Honeydew text-shadow pair" style="background-color: #F0FFF0" data-some="#F0FFF0" data-text="#7A8B7A" data-shadow="rgba(255, 255, 255, 0.5)"></button>
+            <button type="button" class="colorPair" aria-label="Lavender blush text-shadow pair" style="background-color: #FFF0F5" data-some="#FFF0F5" data-text="#8B7A80" data-shadow="rgba(255, 255, 255, 0.5)"></button>
+            <button type="button" class="colorPair" aria-label="Lavender text-shadow pair" style="background-color: #E6E6FA" data-some="#E6E6FA" data-text="#767683" data-shadow="rgba(255, 255, 255, 0.5)"></button>
+            <button type="button" class="colorPair" aria-label="Light goldenrod text-shadow pair" style="background-color: #FAFAD2" data-some="#FAFAD2" data-text="#85856D" data-shadow="rgba(255, 255, 255, 0.5)"></button>
+            <button type="button" class="colorPair" aria-label="Light cyan text-shadow pair" style="background-color: #E0FFFF" data-some="#E0FFFF" data-text="#728585" data-shadow="rgba(255, 255, 255, 0.5)"></button>
+            <button type="button" class="colorPair" aria-label="Seashell text-shadow pair" style="background-color: #FFF5EE" data-some="#FFF5EE" data-text="#8B807A" data-shadow="rgba(255, 255, 255, 0.5)"></button>
+            <button type="button" class="colorPair" aria-label="Alice blue text-shadow pair" style="background-color: #F0F8FF" data-some="#F0F8FF" data-text="#7A8185" data-shadow="rgba(255, 255, 255, 0.5)"></button>
+            <button type="button" class="colorPair" aria-label="Mint cream text-shadow pair" style="background-color: #F5FFFA" data-some="#F5FFFA" data-text="#7E8B83" data-shadow="rgba(255, 255, 255, 0.5)"></button>
+          </div>
+
+          <div id="colorPairingButtons67" class="colorPairingButtons" style="display: none;">
+            <p>Try out some Text-Shadow Pairs :</p>
+            <button type="button" class="colorPair" aria-label="Dark teal text-shadow pair" style="background-color: #FFD1DC" data-some="#002429" data-text="#FFD1DC" data-shadow="rgba(255, 209, 220, 0.5)"></button>
+            <button type="button" class="colorPair" aria-label="Dark red text-shadow pair" style="background-color: #B2FFFF" data-some="#4D0000" data-text="#B2FFFF" data-shadow="rgba(178, 255, 255, 0.5)"></button>
+            <button type="button" class="colorPair" aria-label="Near-black text-shadow pair" style="background-color: #FDFD96" data-some="#00060A" data-text="#FDFD96" data-shadow="rgba(253, 253, 150, 0.5)"></button>
+            <button type="button" class="colorPair" aria-label="Dark purple text-shadow pair" style="background-color: #C1FFC1" data-some="#340036" data-text="#C1FFC1" data-shadow="rgba(193, 255, 193, 0.5)"></button>
+            <button type="button" class="colorPair" aria-label="Steel blue text-shadow pair" style="background-color: #CAE1FF" data-some="#315084" data-text="#CAE1FF" data-shadow="rgba(202, 225, 255, 0.5)"></button>
+            <button type="button" class="colorPair" aria-label="Deep teal text-shadow pair" style="background-color: #FFA07A" data-some="#004055" data-text="#FFA07A" data-shadow="rgba(255, 160, 122, 0.5)"></button>
+            <button type="button" class="colorPair" aria-label="Dark violet text-shadow pair" style="background-color: #E0BBE4" data-some="#210042" data-text="#E0BBE4" data-shadow="rgba(224, 187, 228, 0.5)"></button>
+            <button type="button" class="colorPair" aria-label="Dark navy text-shadow pair" style="background-color: #FFDAB9" data-some="#000726" data-text="#FFDAB9" data-shadow="rgba(255, 218, 185, 0.5)"></button>
+            <button type="button" class="colorPair" aria-label="Dark brown text-shadow pair" style="background-color: #98FF98" data-some="#672700" data-text="#98FF98" data-shadow="rgba(152, 255, 152, 0.5)"></button>
+            <button type="button" class="colorPair" aria-label="Dark gray text-shadow pair" style="background-color: #FFE4E1" data-some="#1B1B1B" data-text="#FFE4E1" data-shadow="rgba(255, 228, 225, 0.5)"></button>
+          </div>
+          <button type="button" id="resetButton" class="resetButton">Reset Colors</button>
+        </div>
+      <div class="text">
+        <label class="formatSwitch" for="formatToggleText" title="Switch output format">
+          <input type="checkbox" id="formatToggleText" aria-label="Output as Tailwind classes">
+          <div class="formatSliderBT">
+            <span>CSS</span>
+            <span>TW</span>
+          </div>
+        </label>
+        <div class="textareaS" id="textareaS"></div>
+        <button type="button" class="copyS" id="copyButtonS" aria-label="Copy text shadow code">
+          <svg class="copysvgS" style="background-color: transparent;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M15 1.25H10.9436C9.10583 1.24998 7.65019 1.24997 6.51098 1.40314C5.33856 1.56076 4.38961 1.89288 3.64124 2.64124C2.89288 3.38961 2.56076 4.33856 2.40314 5.51098C2.24997 6.65019 2.24998 8.10582 2.25 9.94357V16C2.25 17.8722 3.62205 19.424 5.41551 19.7047C5.55348 20.4687 5.81753 21.1208 6.34835 21.6517C6.95027 22.2536 7.70814 22.5125 8.60825 22.6335C9.47522 22.75 10.5775 22.75 11.9451 22.75H15.0549C16.4225 22.75 17.5248 22.75 18.3918 22.6335C19.2919 22.5125 20.0497 22.2536 20.6517 21.6517C21.2536 21.0497 21.5125 20.2919 21.6335 19.3918C21.75 18.5248 21.75 17.4225 21.75 16.0549V10.9451C21.75 9.57754 21.75 8.47522 21.6335 7.60825C21.5125 6.70814 21.2536 5.95027 20.6517 5.34835C20.1208 4.81753 19.4687 4.55348 18.7047 4.41551C18.424 2.62205 16.8722 1.25 15 1.25ZM17.1293 4.27117C16.8265 3.38623 15.9876 2.75 15 2.75H11C9.09318 2.75 7.73851 2.75159 6.71085 2.88976C5.70476 3.02502 5.12511 3.27869 4.7019 3.7019C4.27869 4.12511 4.02502 4.70476 3.88976 5.71085C3.75159 6.73851 3.75 8.09318 3.75 10V16C3.75 16.9876 4.38624 17.8265 5.27117 18.1293C5.24998 17.5194 5.24999 16.8297 5.25 16.0549V10.9451C5.24998 9.57754 5.24996 8.47522 5.36652 7.60825C5.48754 6.70814 5.74643 5.95027 6.34835 5.34835C6.95027 4.74643 7.70814 4.48754 8.60825 4.36652C9.47522 4.24996 10.5775 4.24998 11.9451 4.25H15.0549C15.8297 4.24999 16.5194 4.24998 17.1293 4.27117ZM7.40901 6.40901C7.68577 6.13225 8.07435 5.9518 8.80812 5.85315C9.56347 5.75159 10.5646 5.75 12 5.75H15C16.4354 5.75 17.4365 5.75159 18.1919 5.85315C18.9257 5.9518 19.3142 6.13225 19.591 6.40901C19.8678 6.68577 20.0482 7.07435 20.1469 7.80812C20.2484 8.56347 20.25 9.56458 20.25 11V16C20.25 17.4354 20.2484 18.4365 20.1469 19.1919C20.0482 19.9257 19.8678 20.3142 19.591 20.591C19.3142 20.8678 18.9257 21.0482 18.1919 21.1469C17.4365 21.2484 16.4354 21.25 15 21.25H12C10.5646 21.25 9.56347 21.2484 8.80812 21.1469C8.07435 21.0482 7.68577 20.8678 7.40901 20.591C7.13225 20.3142 6.9518 19.9257 6.85315 19.1919C6.75159 18.4365 6.75 17.4354 6.75 16V11C6.75 9.56458 6.75159 8.56347 6.85315 7.80812C6.9518 7.07435 7.13225 6.68577 7.40901 6.40901Z" />
+          </svg>
+          <svg class="donesvgS" style="background-color: transparent;" xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -960 960 960" width="16" aria-hidden="true" focusable="false"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+        </button>
+    </div>
+    </div>
+
+  </div>
+
+  <div class="sr-only" role="status" aria-live="polite" id="copyStatus"></div>
+
+  <footer>
+    <img src="imgs/prof_p_r.png" width="41" height="41" loading="lazy" decoding="async" alt="" aria-hidden="true">
+    <div class="middle">
+      <span>Copyright <span style="font-family: 'Courier New', Courier, monospace; font-weight: bold; font-size: 1.2em;">©</span> <span id="year"></span> Neumorphic</span>
+    </div>
+    <div class="creators">
+      <span class="creatorsText">Created by</span>
+      <a class="icons" href="https://praashoo7.github.io/Portfolio/" target="_blank" rel="noopener noreferrer" aria-label="Praashoo7 portfolio">
+        <img src="imgs/prof_p_r.png" width="41" height="41" loading="lazy" decoding="async" alt="">
+      </a>
+      <a class="icons" href="https://claude.ai/" target="_blank" rel="noopener noreferrer" aria-label="Claude.ai">
+        <img src="imgs/claude.png" width="41" height="41" loading="lazy" decoding="async" alt="">
+      </a>
+    </div>
+  </footer>
+
+  <div class="small_device">
+    <div class="small_device_card">
+        <div class="small_device_text">
+            If you go any smaller, we might reach singularity!<br>Please switch to a bigger Display.
+        </div>
+    </div>
+  </div>
+
+  <script src="index.js" defer></script>
+
+</body>
+</html>
