@@ -8,8 +8,8 @@ For some of the optimization and logical part claude took over and it is designe
 
 ## Credits
 
-  - Space Mono font from [Google.](https://fonts.google.com/specimen/Space+Mono)
   - Inspired from [neumorphism.io](https://neumorphism.io/).
+  - Space Mono font from [Google.](https://fonts.google.com/specimen/Space+Mono)
   - Shadow types are gathered from around the Internet.
 
 ## License
