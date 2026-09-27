@@ -4,6 +4,8 @@ For some of the optimization and logical part claude took over and it is designe
 
 ![Readme Image](imgs/Readme_Image_1.png)
 ![Readme Image](imgs/Readme_Image_2.png)
+![Readme Image](imgs/Readme_Image_3.png)
+![Readme Image](imgs/Readme_Image_4.png)
 
 
 ## Credits
